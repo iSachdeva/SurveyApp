@@ -19,4 +19,9 @@ extern NSString * const PASSWORD;
 extern NSString * const HTTP_METHOD_GET;
 extern NSString * const HTTP_METHOD_POST;
 
+#pragma mark - ErrorMessages 
+extern NSString * const ERROR_MESSAGE_INVALID_RESPONSE;
+extern NSString * const ERRORCODE_INVALID_RESPONSE;
+
+#pragma mark - Error Code
 @end

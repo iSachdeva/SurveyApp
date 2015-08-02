@@ -41,14 +41,13 @@
                                    NSLog(@"Response: %@",responseStr);
                                    id responseObject = [NSJSONSerialization JSONObjectWithData:[responseStr dataUsingEncoding:NSUTF8StringEncoding] options: NSJSONReadingAllowFragments error:nil];
                                    if(responseObject != nil) {
-                                        [self.delegate operationCompletedWithObject:responseObject andOperationType:RESTOperationTypeSurveyList];
+                                       [self.delegate operationCompletedWithObject:responseObject andOperationType:RESTOperationTypeSurveyList];
                                    } else {
-                                       [self.delegate operationFailedWithError:nil andOperationType:RESTOperationTypeSurveyList];
+                                       [self.delegate operationFailedWithError:[[NSError alloc] initWithDomain:ERROR_MESSAGE_INVALID_RESPONSE code:[ERRORCODE_INVALID_RESPONSE integerValue] userInfo:nil] andOperationType:RESTOperationTypeSurveyList];
                                    }
-                                  
+                                   
                                }
                            }];
-    
 }
 
 

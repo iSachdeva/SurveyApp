@@ -7,13 +7,11 @@
 //
 
 #import "SurveyEngine.h"
-#import "AppDelegate.h"
 #import "RESTTask.h"
 #import "Survey.h"
 
 @interface SurveyEngine() <RESTTask_Delegate> {
     
-    AppDelegate *appDelegate;
 }
 
 @end
@@ -26,13 +24,13 @@
     self = [super init];
     if (self) {
         self.delegate  = delegate_;
-        appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     }
     return self;
 }
 
 #pragma mark - GetSurveyList
 - (void)getSurveyList {
+    //In this function we can encapsulate the request for RestTask. This request is without any post parameters/values, So its direct call of API.
     
     RESTTask* restTask = [[RESTTask alloc]initWithCaller:self];
     [restTask networkRequestTogetSurveyList];
