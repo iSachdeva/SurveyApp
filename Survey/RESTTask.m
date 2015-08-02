@@ -35,10 +35,8 @@
                                NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                                
                                if(connectionError) {
-                                   NSLog(@"Error: %@",connectionError);
                                    [self.delegate operationFailedWithError:connectionError andOperationType:RESTOperationTypeSurveyList];
                                } else {
-                                   NSLog(@"Response: %@",responseStr);
                                    id responseObject = [NSJSONSerialization JSONObjectWithData:[responseStr dataUsingEncoding:NSUTF8StringEncoding] options: NSJSONReadingAllowFragments error:nil];
                                    if(responseObject != nil) {
                                        [self.delegate operationCompletedWithObject:responseObject andOperationType:RESTOperationTypeSurveyList];
