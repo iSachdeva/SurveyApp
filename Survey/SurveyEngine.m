@@ -79,11 +79,10 @@
 }
 
 #pragma mark - RESTTask Delegate Methods
-- (void)operationCompletedWithObject:(id)object andOperationType:(RESTOperationType)operationType {
+- (void)operationCompletedWithObject:(NSArray*)responseSurveyList andOperationType:(RESTOperationType)operationType {
     switch (operationType) {
         case RESTOperationTypeSurveyList:
         {
-            NSArray* responseSurveyList = (NSArray*)object;
             NSMutableArray* surveyList = [self parseTheSurveyList:responseSurveyList];
             if(self.delegate && [self.delegate respondsToSelector:@selector(surveyEngineCompletedWithObject:andOperationType:)]){
                 [self.delegate surveyEngineCompletedWithObject:surveyList andOperationType:SurveyOperationTypeGetSurveyList];

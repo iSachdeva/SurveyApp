@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Session.h"
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    //Assuming got credentials after login and set in session
+    [[Session sharedSession] setToken:@"6eebeac3dd1dc9c97a06985b6480471211a777b39aa4d0e03747ce6acc4a3369"];
+    
+    
     return YES;
 }
 

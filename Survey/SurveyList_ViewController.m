@@ -10,7 +10,7 @@
 #import "SurveyEngine.h"
 #import "Survey.h"
 #import "Survey_TableViewCell.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+AFNetworking.h"
 #import "LoadingWrapper.h"
 
 @interface SurveyList_ViewController () <SurveyEngine_Delegate,UITableViewDelegate,UITableViewDataSource>
@@ -48,7 +48,7 @@
     [loadingIndicatorView showGlobalHudWithMessage:@""];
     takeSurveyButton.hidden = YES;
     refershItem.enabled = NO;
-    surveyListPageControl.numberOfPages = 0;
+    //surveyListPageControl.numberOfPages = 0;
     
     [surveyList removeAllObjects];
     [surveyEngine getSurveyList];
@@ -100,7 +100,7 @@
     
     cell.surveyTitle.text = [(Survey*)[surveyList objectAtIndex:indexPath.row] title];
     cell.surveyDescription.text = [(Survey*)[surveyList objectAtIndex:indexPath.row] surveyDescription];
-    [cell.surveyImageView sd_setImageWithURL:[NSURL URLWithString:[(Survey*)[surveyList objectAtIndex:indexPath.row] coverImageUrl]]];
+    [cell.surveyImageView setImageWithURL:[NSURL URLWithString:[(Survey*)[surveyList objectAtIndex:indexPath.row] coverImageUrl]]];
     
     return cell;
 }

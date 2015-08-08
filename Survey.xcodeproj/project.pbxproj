@@ -17,6 +17,7 @@
 		84062D341B6CD2A8001B8F11 /* SurveyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062D331B6CD2A8001B8F11 /* SurveyTests.m */; };
 		84062D451B6D161C001B8F11 /* RESTTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062D441B6D161C001B8F11 /* RESTTask.m */; };
 		84062D491B6D169A001B8F11 /* SurveyEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062D481B6D169A001B8F11 /* SurveyEngine.m */; };
+		841AB6871B76728800900210 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB6861B76728800900210 /* Session.m */; };
 		84834CB81B6D31AB004C8147 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84834CB71B6D31AB004C8147 /* Constants.m */; };
 		84834CBE1B6D3CF9004C8147 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 84834CBD1B6D3CF9004C8147 /* Survey.m */; };
 		84834CC11B6D51AC004C8147 /* Survey_TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84834CC01B6D51AC004C8147 /* Survey_TableViewCell.m */; };
@@ -55,6 +56,8 @@
 		84062D441B6D161C001B8F11 /* RESTTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTTask.m; sourceTree = "<group>"; };
 		84062D471B6D169A001B8F11 /* SurveyEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyEngine.h; sourceTree = "<group>"; };
 		84062D481B6D169A001B8F11 /* SurveyEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyEngine.m; sourceTree = "<group>"; };
+		841AB6851B76728800900210 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		841AB6861B76728800900210 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		84834CB61B6D31AB004C8147 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		84834CB71B6D31AB004C8147 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		84834CB91B6D32DD004C8147 /* Survey-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Survey-Prefix.pch"; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 				84062D461B6D167F001B8F11 /* Engine */,
 				84062D421B6D15E4001B8F11 /* Rest */,
 				84834CBA1B6D3CAA004C8147 /* Constants */,
+				841AB6841B76726D00900210 /* Session */,
 				84834CC41B6DD619004C8147 /* Utilities */,
 				84062D411B6CED8C001B8F11 /* DB */,
 				84062D241B6CD2A8001B8F11 /* Images.xcassets */,
@@ -224,6 +228,15 @@
 			name = Engine;
 			sourceTree = "<group>";
 		};
+		841AB6841B76726D00900210 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				841AB6851B76728800900210 /* Session.h */,
+				841AB6861B76728800900210 /* Session.m */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
 		84834CBA1B6D3CAA004C8147 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,16 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				84834CF81B6E0984004C8147 /* HudWrapper */,
-				84834CC61B6DDBC7004C8147 /* SDWebImageCache */,
 			);
 			name = Utilities;
-			sourceTree = "<group>";
-		};
-		84834CC61B6DDBC7004C8147 /* SDWebImageCache */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SDWebImageCache;
 			sourceTree = "<group>";
 		};
 		84834CF81B6E0984004C8147 /* HudWrapper */ = {
@@ -406,6 +411,7 @@
 				84834CC11B6D51AC004C8147 /* Survey_TableViewCell.m in Sources */,
 				84062D1A1B6CD2A8001B8F11 /* AppDelegate.m in Sources */,
 				84834CBE1B6D3CF9004C8147 /* Survey.m in Sources */,
+				841AB6871B76728800900210 /* Session.m in Sources */,
 				84062D171B6CD2A8001B8F11 /* main.m in Sources */,
 				84062D451B6D161C001B8F11 /* RESTTask.m in Sources */,
 				84062D201B6CD2A8001B8F11 /* SurveyList_ViewController.m in Sources */,
@@ -547,6 +553,7 @@
 				INFOPLIST_FILE = Survey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -565,6 +572,7 @@
 				INFOPLIST_FILE = Survey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

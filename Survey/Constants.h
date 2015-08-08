@@ -13,7 +13,6 @@
 #pragma mark - REST
 
 extern NSString * const BASE_URL;
-extern NSString * const CRENDITIALS;
 extern NSString * const USERNAME;
 extern NSString * const PASSWORD;
 extern NSString * const HTTP_METHOD_GET;

@@ -97,9 +97,12 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="TzC-EA-rkM"/>
                                 </connections>
                             </tableView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="6" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Sh8-4W-Mtb">
-                                <rect key="frame" x="496" y="250" width="87" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" hidesForSinglePage="YES" numberOfPages="6" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="Sh8-4W-Mtb">
+                                <rect key="frame" x="556" y="250" width="27" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="5RN-Oo-rn4"/>
+                                </constraints>
                                 <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -131,20 +134,20 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="WcM-4Q-JdY" secondAttribute="centerX" id="3ae-bg-K0I"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Sh8-4W-Mtb" secondAttribute="trailing" constant="1" id="7Sx-ic-5ph"/>
                             <constraint firstAttribute="centerX" secondItem="qM2-xA-BLv" secondAttribute="centerX" id="7sX-yn-Lnj"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qM2-xA-BLv" secondAttribute="bottom" constant="41" id="C14-07-xkB"/>
-                            <constraint firstAttribute="centerY" secondItem="Sh8-4W-Mtb" secondAttribute="centerY" constant="-0.5" id="Isq-O4-e66"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sh8-4W-Mtb" secondAttribute="trailing" constant="1" id="E6u-JC-y4z"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="WcM-4Q-JdY" secondAttribute="bottom" id="UnE-bY-cT7"/>
                             <constraint firstItem="WcM-4Q-JdY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="bP8-nf-PnC"/>
                             <constraint firstAttribute="centerY" secondItem="WcM-4Q-JdY" secondAttribute="centerY" id="dVj-lA-Nuu"/>
+                            <constraint firstItem="Sh8-4W-Mtb" firstAttribute="trailing" secondItem="WcM-4Q-JdY" secondAttribute="trailing" constant="-17" id="h9B-Gf-jM5"/>
+                            <constraint firstItem="Sh8-4W-Mtb" firstAttribute="centerY" secondItem="WcM-4Q-JdY" secondAttribute="centerY" id="hbP-Ka-A8L"/>
                             <constraint firstItem="WcM-4Q-JdY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="kKG-dH-r3J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WcM-4Q-JdY" secondAttribute="trailing" constant="-16" id="plT-YR-zFn"/>
-                            <constraint firstAttribute="centerX" secondItem="Sh8-4W-Mtb" secondAttribute="centerX" constant="-256.5" id="rOU-RL-O82"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="rOU-RL-O82"/>
+                                <exclude reference="h9B-Gf-jM5"/>
                             </mask>
                         </variation>
                     </view>

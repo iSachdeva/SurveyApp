@@ -12,7 +12,6 @@
 
 #pragma mark - REST & URLs
 NSString * const BASE_URL = @"https://www-staging.usay.co/app/surveys.json";
-NSString * const CRENDITIALS = @"6eebeac3dd1dc9c97a06985b6480471211a777b39aa4d0e03747ce6acc4a3369";
 NSString * const USERNAME = @"usay";
 NSString * const PASSWORD = @"isc00l";
 NSString * const HTTP_METHOD_GET = @"GET";

@@ -8,6 +8,8 @@
 
 #import "RESTTask.h"
 #import "Constants.h"
+#import "Session.h"
+#import <AFHTTPRequestOperationManager.h>
 
 @implementation RESTTask
 
@@ -18,59 +20,37 @@
     self = [super init];
     if (self) {
         delegate  = delegate_;
+
     }
     return self;
 }
 
 - (void)networkRequestTogetSurveyList {
     
-    NSString* url = [NSString stringWithFormat:@"%@?access_token=%@",BASE_URL,CRENDITIALS];
-    NSMutableURLRequest *urlRequest = [self createRequestWithUrl:url params:nil httpMethod:HTTP_METHOD_GET];
+    NSString* url = [NSString stringWithFormat:@"%@?access_token=%@",BASE_URL,[[Session sharedSession] token]];
     
-    [NSURLConnection sendAsynchronousRequest:urlRequest
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data,
-                                               NSError *connectionError) {
-                               NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                               
-                               if(connectionError) {
-                                   [self.delegate operationFailedWithError:connectionError andOperationType:RESTOperationTypeSurveyList];
-                               } else {
-                                   id responseObject = [NSJSONSerialization JSONObjectWithData:[responseStr dataUsingEncoding:NSUTF8StringEncoding] options: NSJSONReadingAllowFragments error:nil];
-                                   if(responseObject != nil) {
-                                       [self.delegate operationCompletedWithObject:responseObject andOperationType:RESTOperationTypeSurveyList];
-                                   } else {
-                                       [self.delegate operationFailedWithError:[[NSError alloc] initWithDomain:ERROR_MESSAGE_INVALID_RESPONSE code:[ERRORCODE_INVALID_RESPONSE integerValue] userInfo:nil] andOperationType:RESTOperationTypeSurveyList];
-                                   }
-                                   
-                               }
-                           }];
-}
-
-
-#pragma mark - Create Network Request (a generic method for all APIs)
-- (NSMutableURLRequest*)createRequestWithUrl:(NSString *)url_ params:(id)params httpMethod:(NSString *)httpMethod
-{
-    //HTTP Basic Authentication
-    NSString *authenticationString = [NSString stringWithFormat:@"%@:%@", USERNAME, PASSWORD];
-    NSData *authenticationData = [authenticationString dataUsingEncoding:NSASCIIStringEncoding];
-    NSString *authenticationValue = [authenticationData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url_] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:USERNAME password:PASSWORD persistence:NSURLCredentialPersistenceNone];
     
-    [urlRequest setValue:[NSString stringWithFormat:@"Basic %@", authenticationValue] forHTTPHeaderField:@"Authorization"];
+    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
     
-    if (params) {
-        NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-        [urlRequest setValue:[NSString stringWithFormat:@"application/json; charset=%@", charset] forHTTPHeaderField:@"Content-Type"];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCredential:credential];
+    [operation setResponseSerializer:[AFJSONResponseSerializer alloc]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(responseObject != nil) {
+            [self.delegate operationCompletedWithObject:responseObject andOperationType:RESTOperationTypeSurveyList];
+        } else {
+            [self.delegate operationFailedWithError:[[NSError alloc] initWithDomain:ERROR_MESSAGE_INVALID_RESPONSE code:[ERRORCODE_INVALID_RESPONSE integerValue] userInfo:nil] andOperationType:RESTOperationTypeSurveyList];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [urlRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil]];
-    }
+         [self.delegate operationFailedWithError:error andOperationType:RESTOperationTypeSurveyList];
+        
+    }];
     
-    [urlRequest setHTTPMethod:httpMethod];
-    
-    return urlRequest;
+    [manager.operationQueue addOperation:operation];
 }
 
 @end
